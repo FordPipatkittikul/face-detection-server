@@ -7,26 +7,33 @@ const register = require("./controllers/register");
 const signin = require("./controllers/signin");
 const profile = require("./controllers/profile");
 const image = require("./controllers/image");
+const config = require("./database.js");
 
 require('dotenv').config();
 
 const Pat = process.env.PAT;
 const UserID = process.env.USER_ID;
-const hostname = process.env.HOST;
-const username = process.env.USERNAME;
-const database = process.env.DATABASE;
-const password = process.env.PASSWORD;
 
-const db = knex({
-    client: 'pg',
-    connection: {
-      host: hostname,
-      port: 5432,
-      user: username,
-      password: password,
-      database: database,
-    },
-});
+const db = knex(config.development);
+
+// db.select('*').from('users')
+//   .then(data => {
+//     console.log(data); // Your table data
+//   })
+//   .catch(error => {
+//     console.error(error); // Handle errors
+//   });
+
+// const db = knex({
+//     client: 'pg',
+//     connection: {
+//       host: hostname,
+//       port: 5432,
+//       user: username,
+//       password: password,
+//       database: database,
+//     },
+// });
 
 
 
