@@ -10,12 +10,13 @@ module.exports = {
     development: {
       client: 'pg',
       connection: {
+        connectionString: process.env.DATABASE_URL,
         host: hostname,
         port: 5432,
         user: username,
         password: password,
         database: database,
-        ssl:true
+        ssl:{rejectUnauthorized: false}
       },
     },
 };
